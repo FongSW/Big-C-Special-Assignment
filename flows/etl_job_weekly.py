@@ -2,8 +2,9 @@ import boto3
 from io import StringIO, BytesIO
 import pandas as pd
 import numpy as np
-from prefect import task, flow
-from datetime import datetime
+from prefect import task, flow, context
+from prefect.client.schemas.schedules import CronSchedule
+from datetime import datetime, timedelta
 import pytz
 import psycopg2
 import os
@@ -217,5 +218,4 @@ def pipeline():
         raise Exception("Pipeline terminated because syterm not found data for exacting")
 
 if __name__ == '__main__':
-    # pipeline()
-    pipeline.serve(name="weekly_pipeline", cron="0 23 * * 7")
+    pipeline.serve(name="weekly_pipeline", schedule=(CronSchedule(cron="15 23 * * 7", timezone="Asia/Bangkok")))
