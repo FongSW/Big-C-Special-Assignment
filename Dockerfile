@@ -14,13 +14,6 @@ COPY flows /opt/prefect/flows
 # Set the working directory
 WORKDIR /opt/prefect
 
-# # Set prefect config set PREFECT_API_URL
-# RUN prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
-
-# # Create a non-root user and assign necessary permissions
-# RUN adduser --disabled-password --gecos "" supervisoruser \
-#     && chown -R supervisoruser:supervisoruser /opt/prefect /var/log/supervisor
-
 # Copy Supervisor configuration file
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
