@@ -14,5 +14,5 @@ This project aims to create a data pipeline for comparing prices of the top 100 
 6. Store the combined data in the database.
 
 ## Implement application
-1. >>> docker-compose build
-2. >>> docker-compose up -d
+1. Run - > docker-compose build
+2. Run - > docker-compose up -d
