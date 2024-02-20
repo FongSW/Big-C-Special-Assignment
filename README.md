@@ -1,9 +1,18 @@
-# Data pipeline for analysis
-This project is a simulation of creating a data pipeline for extracting data from a Storage Amazon S3 bucket to store it in the Database. After that, analyze it through Lookerstudio to create a business strategy.
+# Big C: Special Assignment
+This project aims to create a data pipeline for comparing prices of the top 100 best-selling smartphones at Big C Online, using data from the website https://www.priceza.com/.
 
 ## Description
-this data pipeline is created by the perfect flow that always runs every Sunday at 11:15.
-and it shows results in Looker Studio. (https://lookerstudio.google.com/reporting/2e0f0eda-290e-4d62-8d8e-4eabed78b33e)
-- 
+- Programming languages: Python, SQL
+- Tools/Technologies: Pandas, Docker, BeautifulSoup, Prefect Flow, PostgreSQL
 
+## Data Pipeline Flow Explanation
+1. Perform web scraping to extract data on the top 100 best-selling smartphones.
+2. Clean the data obtained from Big C.
+3. Search for 'phone_brand', 'phone_model', and 'phone_size' on the website 'https://www.priceza.com/' to find the path containing price comparison data.
+4. Perform web scraping on the obtained paths.
+5. Merge the data from Big C with Priceza.
+6. Store the combined data in the database.
 
+## Implement application
+1. >>> docker-compose build
+2. >>> docker-compose up -d

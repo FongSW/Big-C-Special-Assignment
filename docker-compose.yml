@@ -3,6 +3,7 @@ services:
 
   ### Prefect Database
   database:
+    container_name: "prefect_flow_database"
     image: postgres:15.2-alpine
     restart: always
     environment:
@@ -13,6 +14,7 @@ services:
       - 5432
     volumes: 
       - db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   ### Prefect Server API and UI
   server:
@@ -24,14 +26,8 @@ services:
     environment:
       - TZ=Asia/Bangkok
       - PREFECT_UI_URL=http://127.0.0.1:4200/api
-      # If you want to access Prefect Server UI from anywhere other than the Docker host machine, you will need to change
-      # PREFECT_UI_URL and PREFECT_API_URL to match the external hostname/IP of the host machine. For example:
-      #- PREFECT_UI_URL=http://external-ip:4200/api
-      #- PREFECT_API_URL=http://external-ip:4200/api
       - PREFECT_SERVER_API_HOST=0.0.0.0
       - PREFECT_API_DATABASE_CONNECTION_URL=postgresql+asyncpg://postgres:postgres@database:5432/prefect
-      # Uncomment the following line if you want to use the 'S3 Bucket' storage block instead of the older 'S3' storage
-      # - EXTRA_PIP_PACKAGES=prefect-aws
     ports:
       - 4200:4200
     depends_on:
