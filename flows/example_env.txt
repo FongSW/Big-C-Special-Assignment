@@ -1,6 +1,0 @@
-postgres-username='your_username'
-postgres-password='your_password'
-postgres-host='your_host'
-postgres-port='5432'
-aws_access_key_id='key_id'
-aws_secret_access_key='your_access_key'
